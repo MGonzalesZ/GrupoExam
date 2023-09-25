@@ -41,30 +41,11 @@ namespace EmergMGonzales.APIWeb.Controllers
         [HttpPost]
         public IActionResult Agregar(string nombre, string contrasenia, string correo)
         {
-            //Usuario nuevoModelo = new Contacto()
-            //{
-            //    Nombre = modelo.Nombre,
-            //    Telefono = modelo.Telefono,
-            //    FechaNacimiento = DateTime.ParseExact(modelo.FechaNacimiento, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("es-PE"))
-            //};
             var nuevoUsuario = _usuarioService.CrearUsuario(nombre, contrasenia,correo);
 
             return CreatedAtAction(nameof(ObtenerPorId), new { id = nuevoUsuario.IdUsuario }, nuevoUsuario);
         }
-
-        //[HttpPost]
-        //public IActionResult Agregar([FromBody] Usuario modelo)
-        //{
-        //    //Usuario nuevoModelo = new Contacto()
-        //    //{
-        //    //    Nombre = modelo.Nombre,
-        //    //    Telefono = modelo.Telefono,
-        //    //    FechaNacimiento = DateTime.ParseExact(modelo.FechaNacimiento, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("es-PE"))
-        //    //};
-        //    var nuevoUsuario = _usuarioService.CrearUsuario(modelo);
-
-        //    return CreatedAtAction(nameof(ObtenerPorId), new { id = nuevoUsuario.IdUsuario },nuevoUsuario);
-        //}
+        
 
         [HttpPut("{id}")]
         public IActionResult Actualizar(int id,string nombre, string contrasenia, string correo)
