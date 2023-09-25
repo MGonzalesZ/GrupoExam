@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 //Prueba de pull fermin :)
-//prueba lucia xd
+//prueba lucia 
 
 namespace EmergMGonzales.DAL.DataContext
 {
