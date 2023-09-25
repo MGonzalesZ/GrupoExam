@@ -4,6 +4,8 @@ using EmergMGonzales.Entidades;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
+//Prueba de pull fermin :)
+
 namespace EmergMGonzales.DAL.DataContext
 {
     public partial class EmergGrupalContext : DbContext
