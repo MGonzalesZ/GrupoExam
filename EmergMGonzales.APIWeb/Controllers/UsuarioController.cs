@@ -5,6 +5,7 @@ using System.Diagnostics.Contracts;
 using System.Diagnostics;
 using System.Globalization;
 using EmergMGonzales.Entidades;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmergMGonzales.APIWeb.Controllers
 {
@@ -12,20 +13,22 @@ namespace EmergMGonzales.APIWeb.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private UsuarioService _usuarioService;
+        private readonly UsuarioService _usuarioService;
         public UsuarioController(UsuarioService usuarioService)
         {
             _usuarioService= usuarioService;
         }        
 
         [HttpGet]
+        [Route("listar")]
         public IActionResult ObtenerTodos()
         {
             var Usuarios = _usuarioService.ObtenerTodos();
             return Ok(Usuarios);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("buscar")]        
         public IActionResult ObtenerPorId(int id)
         {
             var usuario = _usuarioService.ObtenerUsuarioPorId(id);
@@ -39,6 +42,7 @@ namespace EmergMGonzales.APIWeb.Controllers
         }
 
         [HttpPost]
+        [Route("agregar")]
         public IActionResult Agregar(string nombre, string contrasenia, string correo)
         {
             var nuevoUsuario = _usuarioService.CrearUsuario(nombre, contrasenia,correo);
@@ -47,7 +51,8 @@ namespace EmergMGonzales.APIWeb.Controllers
         }
         
 
-        [HttpPut("{id}")]
+        [HttpPut]
+        [Route("actualizar")]
         public IActionResult Actualizar(int id,string nombre, string contrasenia, string correo)
         {
             var usuarioExistente = _usuarioService.ObtenerUsuarioPorId(id);
@@ -67,7 +72,8 @@ namespace EmergMGonzales.APIWeb.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route("eliminar")]
         public IActionResult Eliminar(int id)
         {
             var usuario = _usuarioService.ObtenerUsuarioPorId(id);
@@ -82,7 +88,8 @@ namespace EmergMGonzales.APIWeb.Controllers
             return NoContent();
         }
 
-        [HttpPost("autenticar")]
+        [HttpPost]
+        [Route("LOGIN")]
         public IActionResult Autenticar(string nombreUsuario, string contrasenia)
         {
             var usuario = _usuarioService.VerificarCredenciales(nombreUsuario, contrasenia);
