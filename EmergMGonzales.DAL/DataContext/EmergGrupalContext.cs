@@ -4,7 +4,8 @@ using EmergMGonzales.Entidades;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-//Prueba de pull fermin :)
+//Prueba de pull fermin :) ddd ???? 
+//nuevo commentario
 
 namespace EmergMGonzales.DAL.DataContext
 {
