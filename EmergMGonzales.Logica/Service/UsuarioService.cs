@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EmergMGonzales.Logica.Service
-{
+{//mi comentario
     public class UsuarioService 
     {
         private UsuarioRepository _usuarioRepository;
